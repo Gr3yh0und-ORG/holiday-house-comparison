@@ -11,6 +11,8 @@ the hand-backfilled `1.0.0`–`1.5.0` tags (§2), re-created from the previously
 
 ## [Unreleased]
 
+## [1.9.1] — 2026-10-14
+
 ### Fixed
 - huetten.com houses always showed "Available" (green "Frei"): the parser reads the season price
   list, not the booking calendar, so it cannot know. They now show "check manually".
