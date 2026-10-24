@@ -11,6 +11,10 @@ the hand-backfilled `1.0.0`–`1.5.0` tags (§2), re-created from the previously
 
 ## [Unreleased]
 
+### Added
+- Tab icon (favicon): snowy mountains in the page's blue, inline SVG in `templates/index.html`
+  (the FTP deploy uploads one file, so no separate icon file).
+
 ## [1.9.1] — 2026-10-14
 
 ### Fixed
