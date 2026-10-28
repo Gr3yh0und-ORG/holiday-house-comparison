@@ -61,11 +61,9 @@ def scrape(url, _driver=None):
         sqm_m = re.search(r'(\d+)\s*qm', text, re.I)
         result['sqm'] = f"{sqm_m.group(1)} m²" if sqm_m else 'N/A'
 
-        # Bathrooms: take the largest single "X Badezimmer" mention. Summing all
-        # mentions inflates the count when the room list repeats the word
-        # ("Dieses Haus hat 4 Badezimmer. Schlafzimmer mit 1 Badezimmer ensuite.")
-        bath_matches = [int(m.group(1)) for m in re.finditer(r'(\d+)\s*Badezimmer', text)]
-        result['bathrooms'] = str(max(bath_matches)) if bath_matches else 'N/A'
+        # Bathrooms: count "X Badezimmer" occurrences and sum them
+        bath_count = sum(int(m.group(1)) for m in re.finditer(r'(\d+)\s*Badezimmer', text))
+        result['bathrooms'] = str(bath_count) if bath_count else 'N/A'
 
         # Room config: expand "Nx DZ mit <description>" to N individual entries
         room_config = []

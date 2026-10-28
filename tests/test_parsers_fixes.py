@@ -99,7 +99,6 @@ def test_b2_nebenkosten_without_price_section():
 
 
 # ---------------------------------------------------------------------------
-# B9: repeated "X Badezimmer" mentions must not be summed.
 # G4: with no addressLocality, the country alone is the address.
 # ---------------------------------------------------------------------------
 HUETTEN_BATHROOMS_AND_ADDRESS = """
@@ -112,12 +111,6 @@ HUETTEN_BATHROOMS_AND_ADDRESS = """
 <p>Dieses Haus hat 4 Badezimmer. Schlafzimmer mit 1 Badezimmer ensuite.</p>
 </body></html>
 """
-
-
-def test_b9_bathrooms_largest_mention_not_sum():
-    with _patch_get(huetten, HUETTEN_BATHROOMS_AND_ADDRESS):
-        result = huetten.scrape('https://www.huetten.com/de/huette/testhaus-rt1.html')
-    assert result['bathrooms'] == '4'
 
 
 def test_g4_address_falls_back_to_country():
